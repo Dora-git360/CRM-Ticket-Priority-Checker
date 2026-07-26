@@ -2,11 +2,9 @@
 
 ## Overview
 
-This is my first n8n automation project.
+This project demonstrates an automated CRM ticket priority classification workflow built using n8n.
 
-The workflow automatically checks customer support tickets and assigns the correct priority based on predefined business rules.
-
-It demonstrates CRM workflow automation using n8n.
+The workflow evaluates incoming customer support tickets and automatically routes them based on predefined business rules, helping support teams prioritize requests efficiently.
 
 ---
 
@@ -34,11 +32,11 @@ Low Priority Path
 
 ## Features
 
-- Ticket Priority Detection
-- Business Rule Automation
-- CRM Workflow Logic
-- No Coding Required
-- Beginner Friendly
+- Automatic ticket priority classification
+- Business rule-based decision making
+- CRM workflow automation
+- Easy to customize
+- Beginner-friendly n8n project
 
 ---
 
@@ -53,27 +51,24 @@ Low Priority Path
 
 ## Input Example
 
-Customer Name:
-John
+**Customer Name:** John
 
-Issue:
-Refund Request
+**Issue:** Refund Request
 
-Priority:
-High
+**Priority:** High
 
 ---
 
 ## Output
 
-The workflow routes the ticket into the correct priority path automatically.
+The workflow automatically routes customer support tickets to the appropriate priority path.
 
 ---
 
 ## Use Cases
 
 - Customer Support
-- CRM Teams
+- CRM Operations
 - Helpdesk Automation
 - Service Desk
 - Internal Ticket Routing
@@ -82,6 +77,6 @@ The workflow routes the ticket into the correct priority path automatically.
 
 ## Author
 
-Dorababu Buddha
-India
-Learning AI Automation using n8n
+**Buddha Dorababu**
+
+AI Automation | n8n | CRM Automation | Workflow Automation
