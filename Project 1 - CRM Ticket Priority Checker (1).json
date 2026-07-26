@@ -1,0 +1,217 @@
+{
+  "name": "Project 1 - CRM Ticket Priority Checker",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1104,
+        -320
+      ],
+      "id": "87141754-e994-4d3e-96d8-4341a21aef01",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "90972146-c1c8-41b3-9acb-092f5ccff797",
+              "name": "CustomerName",
+              "value": "Dora",
+              "type": "string"
+            },
+            {
+              "id": "f0321666-6912-4f1a-9fc4-1d12604826f6",
+              "name": "Email",
+              "value": "buddhadorababu412@gmail.com",
+              "type": "string"
+            },
+            {
+              "id": "61bdd57e-4862-4308-8d06-9ac95594930a",
+              "name": "issue",
+              "value": "refundrequest",
+              "type": "string"
+            },
+            {
+              "id": "f8dd940c-55fb-4830-a061-c6b21fce9bf6",
+              "name": "Priority",
+              "value": "medium",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -896,
+        -320
+      ],
+      "id": "465dd70c-4f2f-4951-8bca-16b80c71ccb4",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "3a7e0b35-f7b9-4400-b75d-d7d38b9b97f1",
+              "leftValue": "={{ $json.Priority }}",
+              "rightValue": "High",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -688,
+        -320
+      ],
+      "id": "99b921f2-b912-489f-80a5-3f27f60a40b8",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3271a5cc-dc6d-453f-afe8-147f86fa6ccd",
+              "name": "To",
+              "value": "={{ $json.Email }}",
+              "type": "string"
+            },
+            {
+              "id": "c9a55e18-0580-4d32-830f-af4653aaff8b",
+              "name": "Subject",
+              "value": "High priority Ticket",
+              "type": "string"
+            },
+            {
+              "id": "e7f4d7a3-3983-4c9c-8f24-3be19f4f4586",
+              "name": "Body",
+              "value": "=Hello {{$json.CustomerName}}, your {{$json.issue}} request has been received. Our support team will contact you shortly.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -480,
+        -416
+      ],
+      "id": "db8eeb36-6999-4f12-8aa0-774ff2cde7df",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c379b56f-a76c-4368-ad88-d13c4d710505",
+              "name": "To",
+              "value": "={{$json.Email}}",
+              "type": "string"
+            },
+            {
+              "id": "fc718286-6f51-4e02-b79e-14595b071f27",
+              "name": "Subject",
+              "value": "Normal Priority Ticket",
+              "type": "string"
+            },
+            {
+              "id": "410aa879-2994-4179-aa5c-b0c6762bce3a",
+              "name": "=Body",
+              "value": "=Hello {{$json.CustomerName}}, your {{$json.issue}} request has been received and added to our support queue.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -480,
+        -224
+      ],
+      "id": "4bd3f435-0883-4042-a870-9200c88a418c",
+      "name": "Edit Fields2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "2cfdae6e-7ec9-49f9-a265-ae6111e94e80",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "388594768cda9628d288e759936b257db188b4bdb5b2d4d1d67ecf434608a591"
+  },
+  "nodeGroups": [],
+  "id": "WQzwbtbK0Gt2e89l",
+  "tags": []
+}
